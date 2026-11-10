@@ -1,5 +1,18 @@
 # Deploying the compression server (free, ~3 minutes)
 
+## Current deployment
+
+| Item | Value |
+| --- | --- |
+| Address | `https://campushub-pdftools.onrender.com` |
+| Host | Render, free plan, Singapore region, Docker |
+| Engine | **ghostscript** (PyMuPDF also available as the second engine / verifier) |
+| Verified | `GET /api/health` -> 200; a 13.11 MB / 3-page image PDF -> 3.18 MB (75.73% smaller, 3 pages, same page size) |
+| Auto-deploy | on, from `main` of <https://github.com/patan-jamsheer/campushub-pdftools> |
+
+That address is the built-in release default in `src/modules/pdftools/config.ts`, and it can be overridden in
+the app. Free instances sleep after ~15 minutes idle; the next request takes 30-60 s to wake.
+
 The Android app needs a public **HTTPS** address. This folder is a complete, self-contained Docker service, so
 the host builds it for you — no Python setup on the server, no build commands to type.
 

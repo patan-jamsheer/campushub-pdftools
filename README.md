@@ -1,5 +1,8 @@
 # PDF Tools compression service
 
+**Live instance:** <https://campushub-pdftools.onrender.com> (Render free plan, ghostscript engine).
+`GET /api/health` reports `engine: ghostscript` and `status: ok`.
+
 **Deploy a permanent URL (free, ~3 minutes):**
 <https://render.com/deploy?repo=https://github.com/patan-jamsheer/campushub-pdftools>
 

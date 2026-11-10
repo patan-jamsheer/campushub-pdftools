@@ -1,0 +1,4 @@
+# Keep line endings LF everywhere: the image is built on Linux and the Dockerfile CMD runs through /bin/sh.
+* text=auto eol=lf
+*.png binary
+*.pdf binary

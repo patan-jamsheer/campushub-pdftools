@@ -1,0 +1,27 @@
+# Render Blueprint for the PDF Tools compression service.
+#
+# This file must sit at the root of the repository that Render watches, which is why the service has its own
+# small repository (`campushub-pdftools`) instead of living inside the Android app repo.
+#
+# Render dashboard -> New -> Blueprint -> pick this repo -> Apply. It builds the Dockerfile and gives an
+# https://<name>.onrender.com address to paste into the app (Compress PDF -> Compression server -> Change).
+services:
+  - type: web
+    name: campushub-pdftools
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: singapore
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      # Render sets PORT itself; 8080 is the value baked into the image.
+      - key: PORT
+        value: 8080
+      # 30 MB, matching the app's picker limit. Change both together if this is raised.
+      - key: PDFTOOLS_MAX_UPLOAD_BYTES
+        value: "31457280"
+      - key: PDFTOOLS_MAX_PAGES
+        value: "3000"
+      - key: PDFTOOLS_TIMEOUT_SECONDS
+        value: "180"

@@ -3,20 +3,23 @@
 The Android app needs a public **HTTPS** address. This folder is a complete, self-contained Docker service, so
 the host builds it for you — no Python setup on the server, no build commands to type.
 
-Everything here is already in the repository, so deploying is: open Render, paste the repo URL, click Create.
+Everything here is already in the repository, so deploying is: open one link, click Apply.
 
 ## Render (free tier, no credit card)
 
-1. Sign in at <https://render.com> with GitHub (free, no card needed for the free instance type).
-2. **New +** → **Web Service**.
-3. Choose **Public Git repository** and paste:
-   `https://github.com/patan-jamsheer/campushub-pdftools`
-4. Render reads `Dockerfile` automatically. Leave everything else at the defaults and click **Create Web Service**.
-5. Wait for the first build (~3–5 minutes). The log ends with
-   `waitress-serve --listen=0.0.0.0:8080 ...` and the service goes **Live**.
-6. Copy the address at the top — it looks like `https://campushub-pdftools.onrender.com`.
-7. In the app: **PDF Tools → Compress PDF → Compression server → Change**, paste that address, **Save**, then
+**One click:** <https://render.com/deploy?repo=https://github.com/patan-jamsheer/campushub-pdftools>
+
+1. Sign in at <https://render.com> with GitHub when asked (free, no card needed for the free instance type).
+2. The page already has this repo selected — click **Apply**. It reads `render.yaml` and starts the build.
+3. Wait for the first build (~3–5 minutes). The log ends with
+   `waitress-serve --listen=0.0.0.0:<port> ...` and the service goes **Live**.
+4. Copy the address at the top — it looks like `https://campushub-pdftools.onrender.com`.
+5. In the app: **PDF Tools → Compress PDF → Compression server → Change**, paste that address, **Save**, then
    press **Test**. It should answer `Connected. Engine: ghostscript`.
+
+If the one-click page asks you to install the GitHub app (some accounts do for Blueprints), use
+**New + → Web Service → Public Git repository** instead and paste
+`https://github.com/patan-jamsheer/campushub-pdftools`; Render builds the same `Dockerfile`.
 
 No APK rebuild is needed: the address is stored in the app.
 

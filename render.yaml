@@ -15,9 +15,9 @@ services:
     healthCheckPath: /api/health
     autoDeploy: true
     envVars:
-      # Render sets PORT itself; 8080 is the value baked into the image.
-      - key: PORT
-        value: 8080
+      # PORT is deliberately not set here: Render injects it and routes traffic to that port. The image's
+      # start command reads $PORT (falling back to 8080 for a plain `docker run`), so both paths work.
+      #
       # 30 MB, matching the app's picker limit. Change both together if this is raised.
       - key: PDFTOOLS_MAX_UPLOAD_BYTES
         value: "31457280"

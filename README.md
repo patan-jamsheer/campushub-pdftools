@@ -1,5 +1,11 @@
 # PDF Tools compression service
 
+**Deploy a permanent URL (free, ~3 minutes):**
+<https://render.com/deploy?repo=https://github.com/patan-jamsheer/campushub-pdftools>
+
+Sign in with GitHub, click **Apply**, then paste the `https://….onrender.com` address into the app
+(**Compress PDF → Compression server → Change → Save**). Details and alternatives: [DEPLOY.md](DEPLOY.md).
+
 The Campus Hub Android app cannot do real PDF compression on its own. `pdf-lib` can rewrite a PDF's
 structure, but it cannot re-encode embedded images, and images are where nearly all of a photo-heavy PDF's
 size comes from. This small Flask service does what iLovePDF's server does: it downsamples and re-encodes
